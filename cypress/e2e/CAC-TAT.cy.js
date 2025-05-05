@@ -204,7 +204,7 @@ it('preencha o campo da área de texto usando o comando invoke', () => {
   .should('have.value', 'um texto qualquer')
 })  
 
-it.only('faz uma requisição HTTP', () => {
+it('faz uma requisição HTTP', () => {
   cy.request('https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html')
   .as('getRequest')
   .its('status')
