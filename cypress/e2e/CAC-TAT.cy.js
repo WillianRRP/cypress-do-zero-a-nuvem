@@ -216,4 +216,14 @@ it.only('faz uma requisição HTTP', () => {
   .its('body')
   .should('include', 'CAC TAT')
 })
+it.only('Encotre o gato escondido', () => {
+  cy.get('#cat')
+  .invoke('show')
+  .should('be.visible')
+  cy.get('#title')
+  .invoke('text', 'cat tat')
+  cy.get('#subtitle')
+  .invoke('text', 'gatinho <3')
+
+})
 })
