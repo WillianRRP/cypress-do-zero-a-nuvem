@@ -19,6 +19,8 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   it('Preenche os campos obrigatórios e envia o formulário com texto longo', () => {
+    cy.clock()
+
     const longText = Cypress._.repeat('oi', 200)
     cy.get('#firstName').type('Billy')
     cy.get('#lastName').type('Rp')
@@ -26,15 +28,21 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#open-text-area').type(longText, { delay: 0 })
     cy.contains('button', 'Enviar').click()
     cy.get('.success').should('be.visible')
+
+    cy.tick(3000)
+    cy.get('.success').should('not.be.visible')
   })
 
   it('Exibe mensagem de erro ao submeter o formulário com email inválido', () => {
+    cy.clock()
     cy.get('#firstName').type('Billy')
     cy.get('#lastName').type('ro')
     cy.get('#email').type('testeteste')
     cy.get('#open-text-area').type('oi')
     cy.contains('button', 'Enviar').click()
     cy.get('.error').should('be.visible')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
   })
 
   it('O campo de telefone permanece vazio ao digitar valor não numérico', () => {
@@ -42,6 +50,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   it('Exibe erro se telefone for obrigatório mas não preenchido', () => {
+    cy.clock()
     cy.get('#firstName').type('Billy')
     cy.get('#lastName').type('Rp')
     cy.get('#email').type('testeteste@gmail.com')
@@ -49,6 +58,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#open-text-area').type('oi')
     cy.contains('button', 'Enviar').click()
     cy.get('.error').should('be.visible')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
+    
   })
 
   it('Preenche e limpa os campos nome, sobrenome, email, telefone e mensagem', () => {
@@ -84,13 +96,19 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   it('Exibe erro ao submeter o formulário vazio', () => {
+    cy.clock()
     cy.contains('button', 'Enviar').click()
     cy.get('.error').should('be.visible')
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
   })
 
   it('Envia formulário com sucesso usando comando customizado', () => {
+    cy.clock()
     cy.fillMandatoryFieldsAndSubmit()
     cy.get('.success').should('be.visible')
+    cy.tick(3000)
+    cy.get('.success').should('not.be.visible')
   })
 
   it('Seleciona produto (YouTube) por texto', () => {
