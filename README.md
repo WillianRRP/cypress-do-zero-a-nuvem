@@ -1,28 +1,103 @@
-# 🌲 Cypress, do Zero à Nuvem ☁️
+# Testes Automatizados com Cypress
 
-👋 Seja bem-vindo(a)!
+Este projeto utiliza o **Cypress** para realizar testes automatizados de interface. Está preparado para rodar testes tanto em resoluções padrão quanto em resoluções móveis.
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai amar esse curso. ❤️
+---
 
-## O que você vai aprender?
+## ✅ Pré-requisitos
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar upload de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
-- Como executar os testes em um _workflow_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como integrar seu _workflow_ de integração contínua com o Cypress Cloud (o serviço de gestão de testes do Cypress na nuvem)
+Certifique-se de ter as seguintes ferramentas instaladas na sua máquina:
 
-## Vamos começar?
+- **Git** – [v2.42.1](https://git-scm.com/)
+- **Node.js** – [v20.13.1](https://nodejs.org/)
+- **npm** – [v10.8.1](https://www.npmjs.com/)
+- **Visual Studio Code** (ou outra IDE de sua preferência) – [v1.90.2](https://code.visualstudio.com/)
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
+---
 
-___
+## 📦 Instalação
 
-Este é um curso da **Escola Talking About Testing**.
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   cd seu-repositorio
+   ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+---
+
+## 🚀 Comandos Disponíveis
+
+### Abrir o Cypress (modo interativo)
+```bash
+npm run cypress:open
+```
+
+### Rodar os testes (modo headless)
+```bash
+npm run test
+```
+
+Ou diretamente via `npx`:
+```bash
+npx cypress run
+```
+
+---
+
+### Abrir Cypress em resolução mobile (modo interativo)
+Adicione ao `package.json`:
+```json
+"scripts": {
+  "cy:open:mobile": "cypress open --config viewportWidth=410,viewportHeight=860"
+}
+```
+
+Depois execute:
+```bash
+npm run cy:open:mobile
+```
+
+---
+
+### Rodar testes em resolução mobile (modo headless)
+Adicione ao `package.json`:
+```json
+"scripts": {
+  "test:mobile": "cypress run --config viewportWidth=410,viewportHeight=860"
+}
+```
+
+Depois execute:
+```bash
+npm run test:mobile
+```
+
+Ou diretamente via `npx`:
+```bash
+npx cypress run --config viewportWidth=410,viewportHeight=860
+```
+
+---
+
+## 🧪 Como Testar
+
+### Teste Padrão
+1. Execute `npm run cypress:open` para o modo interativo.
+2. Ou `npm run test` / `npx cypress run` para o modo headless.
+3. Selecione o arquivo de teste e aguarde a execução.
+
+### Teste em Resolução Mobile
+1. Execute `npm run cy:open:mobile` ou `npx cypress open --config viewportWidth=410,viewportHeight=860` para modo interativo.
+2. Execute `npm run test:mobile` ou `npx cypress run --config viewportWidth=410,viewportHeight=860` para modo headless.
+
+---
+
+## 📌 Observações
+
+- Verifique se está na raiz do projeto ao rodar os comandos.
+- A resolução `410x860` simula uma tela mobile, mas pode ser ajustada conforme o dispositivo desejado.
